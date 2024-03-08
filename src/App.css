@@ -580,10 +580,10 @@ textarea{
   align-items: flex-start;
   justify-content: center;
 }
-
+/* overflow was auto , which was creating issues in box size of each stories , changed it to visible */
 .show-para>p{
   max-height: 100px;
-  overflow-y: auto;
+  overflow-y: visible;
   margin: 0;
 }
 
