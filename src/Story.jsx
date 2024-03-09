@@ -4,7 +4,9 @@ import { BiChevronDown } from "react-icons/bi"
 import { BsPen, BsArrowLeft } from "react-icons/bs"
 import Popular from './Popular'
 import { CgArrowsExchangeAltV } from "react-icons/cg"
-
+// Importing toastify module
+import { ToastContainer,toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import SwiperCore, { EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -14,6 +16,7 @@ SwiperCore.use([EffectCoverflow]);
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js"
 import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js"
+
 
 const appSetting = {
   databaseURL: "https://freshlybrewedassignment-default-rtdb.firebaseio.com/"
@@ -161,6 +164,12 @@ export default function Story() {
     setSelectedCategory('')
   }
 
+
+  const toastNotify = () => {
+    // Calling toast method by passing string
+    toast("Story published");
+}
+
   function handleSubmit(e) {
     const random = ((Math.random() * 4))
     e.preventDefault()
@@ -182,7 +191,8 @@ export default function Story() {
         clear()
       }
     }
-
+    //called toast notification handler 
+    toastNotify()
     // setContent(false)
 
   }
@@ -552,6 +562,16 @@ export default function Story() {
             <button type='submit' className='submit-btn' onClick={handleSubmit}>
               PUBLISH YOUR STORY
             </button>
+            <ToastContainer
+            position="bottom-right"
+            autoClose={4000}
+            hideProgressBar={true}
+            closeOnClick
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            />
           </div>}
         </form>
 
