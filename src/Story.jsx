@@ -478,7 +478,8 @@ export default function Story() {
       const random = ((Math.random() * 4))
       return (
         <div key={random} className='single-items'>
-          {paragraph(Object.values(items[1]))}
+          {/* working here => fixing bug -show story if category is available otherwise display 0 stories*/}
+          {paragraph(searchResults2.length===0?Object.values(items[1]):null)}
         </div>
       )
     })
@@ -534,7 +535,7 @@ export default function Story() {
                     onChange={handleSearch} required />
                 </div>
 
-
+              {/* might wanna work here */}
                 {searchText.length === 0 ?
                   (<ul className='search-list'>
                     {initialCategories.map(category => (
